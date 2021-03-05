@@ -16,6 +16,8 @@ const AppPage = ({ app, errors }: Props) => {
   const [showBuilderDrawer, setShowBuilderDrawer] = useState(false);
   const [activeTemplate, setActiveTemplate] = useState(0);
 
+  console.log("have app", app);
+
   if (errors) {
     return (
       <Layout title="Error | Next.js + TypeScript Example">
@@ -101,7 +103,11 @@ const AppPage = ({ app, errors }: Props) => {
           app={app}
         />
       )}
-      <BuilderComponent model="app" content={app as any} />
+      <BuilderComponent
+        model="app"
+        data={{ ...app?.data?.defaultInputValues }}
+        content={app as any}
+      />
     </Layout>
   );
 };
